@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/:path*", "destination": "sattutoringai-production.up.railway.app*" },
+    { "source": "/api/:path*", "destination": "https://sattutoringai-production.up.railway.app/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
