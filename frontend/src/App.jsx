@@ -208,10 +208,11 @@ function LessonPlanner({ students, onRefresh }) {
         <Card>
           <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--muted)', marginBottom: 10 }}>Generated lesson plan</div>
           {loading ? (
-            <div style={{ color: 'var(--muted)', fontStyle: 'italic', fontSize: 13 }}>Asking Claude to build your lesson plan…</div>
+            <div style={{ color: 'var(--muted)', fontStyle: 'italic', fontSize: 13 }}>Generating your lesson plan…</div>
           ) : (
             <div style={{ fontSize: 13, lineHeight: 1.8, color: 'var(--text)' }}
                 dangerouslySetInnerHTML={{ __html: plan
+                    .replace(/^# (.*?)$/gm, '<h2 style="font-size:16px;font-weight:600;margin:1rem 0 6px">$1</h2>')
                     .replace(/^## (.*?)$/gm, '<h3 style="font-size:14px;font-weight:600;margin:1rem 0 4px">$1</h3>')
                     .replace(/^### (.*?)$/gm, '<h4 style="font-size:13px;font-weight:600;margin:0.75rem 0 4px">$1</h4>')
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')

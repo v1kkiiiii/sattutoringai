@@ -190,18 +190,19 @@ Topics to cover: {req.topics}
 {score_context}
 {f"Known weak areas: {req.weak_areas}" if req.weak_areas else ""}
 
-Structure the lesson plan with these exact sections:
-1. WARM-UP (5 min): A quick review or activation exercise
+Structure the lesson plan with these exact sections and base the amount of things based on allotted time:
+1. WARM-UP: A quick review or activation exercise and/or allow time to review homework if there was assigned homework
 2. CONCEPT REVIEW: Targeted instruction for the topics listed
-3. PRACTICE PROBLEMS: 2-3 specific SAT-style practice problems with step-by-step solutions
-4. STRATEGY TIPS: 2-3 SAT-specific strategies for this topic (timing, elimination, shortcuts)
-5. WRAP-UP: How to check understanding and what to review before next session
+3. PRACTICE PROBLEMS: specific SAT-style practice problems with step-by-step solutions, try to find practice problems from real, previou sats to use
+4. STRATEGY TIPS: SAT-specific strategies for this topic (timing, elimination, shortcuts)
+5. WRAP-UP: How to check understanding, what to review before next session, and assigned homework that reviews topics covered today
 
-Be specific, practical, and use real SAT terminology. Include approximate time for each section."""
+Be specific, practical, and use real SAT terminology. Include approximate time for each section. 
+At the end, give an overview of what the session covered to give to student/parent, and make this overview a little less formal and more personable"""
 
     message = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=1000,
+        max_tokens=2000,
         messages=[{"role": "user", "content": prompt}]
     )
 
