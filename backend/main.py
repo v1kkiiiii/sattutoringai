@@ -200,7 +200,7 @@ Structure the lesson plan with these exact sections:
 Be specific, practical, and use real SAT terminology. Include approximate time for each section."""
 
     message = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        mmodel="claude-sonnet-4-6",
         max_tokens=1000,
         messages=[{"role": "user", "content": prompt}]
     )
