@@ -203,7 +203,7 @@ function LessonPlanner({ students, onRefresh }) {
           </Btn>
         </div>
       </Card>
-
+  
       {(plan || loading) && (
         <Card>
           <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--muted)', marginBottom: 10 }}>Generated lesson plan</div>
