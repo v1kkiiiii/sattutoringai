@@ -210,7 +210,16 @@ function LessonPlanner({ students, onRefresh }) {
           {loading ? (
             <div style={{ color: 'var(--muted)', fontStyle: 'italic', fontSize: 13 }}>Asking Claude to build your lesson plan…</div>
           ) : (
-            <pre style={{ fontFamily: 'var(--font)', fontSize: 13, whiteSpace: 'pre-wrap', lineHeight: 1.7, color: 'var(--text)' }}>{plan}</pre>
+            <div style={{ fontSize: 13, lineHeight: 1.8, color: 'var(--text)' }}
+                dangerouslySetInnerHTML={{ __html: plan
+                    .replace(/^## (.*?)$/gm, '<h3 style="font-size:14px;font-weight:600;margin:1rem 0 4px">$1</h3>')
+                    .replace(/^### (.*?)$/gm, '<h4 style="font-size:13px;font-weight:600;margin:0.75rem 0 4px">$1</h4>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/^- (.*?)$/gm, '<div style="padding:2px 0 2px 12px;border-left:2px solid var(--border2)">$1</div>')
+                    .replace(/^\d+\. (.*?)$/gm, '<div style="padding:2px 0">$1</div>')
+                    .replace(/\n\n/g, '<br/>')
+                }}
+            />
           )}
         </Card>
       )}
