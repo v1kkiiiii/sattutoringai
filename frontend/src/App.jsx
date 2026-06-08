@@ -214,6 +214,21 @@ function LessonPlanner({ students, onRefresh }) {
   }
 
   function renderMarkdown(text) {
+    // Convert tables first
+    const tableRegex = /(\|.*\|\n)((\|[-: ]+\|\n))((\|.*\|\n?)*)/gm
+    text = text.replace(tableRegex, (match) => {
+      const rows = match.trim().split('\n')
+      const headers = rows[0].split('|').filter(c => c.trim()).map(c => `<th>${c.trim()}</th>`).join('')
+      const body = rows.slice(2).map(row => {
+        const cells = row.split('|').filter(c => c.trim()).map(c => `<td>${c.trim()}</td>`).join('')
+        return `<tr>${cells}</tr>`
+      }).join('')
+      return `<table style="width:100%;border-collapse:collapse;margin:12px 0;font-size:12px">
+        <thead><tr style="background:var(--bg3)">${headers}</tr></thead>
+        <tbody>${body}</tbody>
+      </table>`
+    })
+
     return text
       .replace(/^# (.*?)$/gm, '<h2 style="font-size:16px;font-weight:600;margin:1.25rem 0 6px;color:var(--accent)">$1</h2>')
       .replace(/^## (.*?)$/gm, '<h3 style="font-size:15px;font-weight:600;margin:1rem 0 4px">$1</h3>')
@@ -225,7 +240,7 @@ function LessonPlanner({ students, onRefresh }) {
       .replace(/^- (.*?)$/gm, '<div style="padding:3px 0 3px 14px;border-left:2px solid var(--accent);margin:2px 0;font-size:13px">$1</div>')
       .replace(/^\d+\. (.*?)$/gm, '<div style="padding:3px 0;font-size:13px">$1</div>')
       .replace(/\n\n/g, '<br/>')
-  }
+  } 
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>

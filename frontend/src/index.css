@@ -53,3 +53,9 @@ select option { background: var(--bg2); }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+table th, table td {
+  padding: 7px 10px;
+  border: 1px solid var(--border2);
+  text-align: left;
+}
