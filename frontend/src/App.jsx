@@ -208,7 +208,7 @@ function LessonPlanner({ students, onRefresh }) {
         <Card>
           <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--muted)', marginBottom: 10 }}>Generated lesson plan</div>
           {loading ? (
-            <div style={{ color: 'var(--muted)', fontStyle: 'italic', fontSize: 13 }}>Generating your lesson plan…</div>
+            <div style={{ color: 'var(--muted)', fontStyle: 'italic', fontSize: 13 }}>Creating your lesson plan, please be patient…</div>
           ) : (
             <div style={{ fontSize: 13, lineHeight: 1.8, color: 'var(--text)' }}
                 dangerouslySetInnerHTML={{ __html: plan

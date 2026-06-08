@@ -182,7 +182,7 @@ def generate_lesson_plan(req: LessonPlanRequest):
         gap = req.target_score - req.current_score
         score_context = f"Current score: {req.current_score}. Target score: {req.target_score}. Score gap to close: {gap} points."
 
-    prompt = f"""You are an expert SAT tutor. Create a detailed, structured {req.duration_mins}-minute SAT lesson plan.
+    prompt = f"""I am an expert SAT tutor for my student. Create a detailed, structured {req.duration_mins}-minute SAT lesson plan.
 
 Student: {req.student_name}
 SAT Section: {req.section}
